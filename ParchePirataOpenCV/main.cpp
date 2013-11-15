@@ -18,9 +18,72 @@ int main()
 	float EYE_SH = 0.28f;
     
 	Mat dest, gray;
-	//Mat imagen = imread("/Users/Diogo/Desktop/fotoMia.jpeg");
-    Mat imagen = imread("/Users/Diogo/Desktop/antonia2.jpg");
+	//Mat imagenOriginal = imread("/Users/Diogo/Desktop/fotoMia.jpeg");
+    //Mat imagenOriginal=imread("/Users/Diogo/Pictures/IMG_1967 1.JPG");
+   // Mat imagenOriginal=imread("/Users/Diogo/Desktop/antonia2.jpg");
+    // Mat src=imread("/Users/Diogo/Pictures/IMG_1967 1.JPG");
+    // Mat src=imread("/Users/Diogo/Desktop/antonia2.jpg");
     
+    
+    // string urlImagen="/Users/Diogo/Pictures/IMG_1967 1.JPG";
+    //string urlImagen="/Users/Diogo/Desktop/antonia2.jpg";
+   string urlImagen="/Users/Diogo/Desktop/fotoMia.jpeg";
+    //string urlImagen="/Users/Diogo/Pictures/IMG_1797.JPG";
+   //string urlImagen="/Users/Diogo/Pictures/IMG_1443.JPG";
+   //string urlImagen="/Users/Diogo/Pictures/IMG_1480.JPG";
+    //string urlImagen="/Users/Diogo/Pictures/IMG_1957.JPG";
+    //string urlImagen="";
+    //string urlImagen="";
+    //string urlImagen="";
+    //string urlImagen="";
+    
+    Mat src=imread(urlImagen);
+     //Mat src=imread("/Users/Diogo/Pictures/DSC03134.JPG");
+    Mat imagen;
+   
+    
+    
+    Size sizeScr=src.size();
+    cout<<"Ancho : "<<sizeScr.width<<"| Largo : "<<sizeScr.height<<endl;
+    //resize(src,src, Size(800,600));
+   
+    if (sizeScr.width<sizeScr.height) {
+        cout<<"Es mayor el Largo"<<endl;
+        resize(src,src, Size(800,600));
+        
+        transpose(src, imagen);
+        flip(imagen, imagen, 1);
+        imwrite("imagen90grados.jpeg", imagen);
+        
+        
+    }
+    else{
+        
+        if(sizeScr.width>1024 || sizeScr.height>900){
+            resize(src,src, Size(800,600));
+            imagen=src;
+        }
+        else{
+             imagen=src;
+        }
+       
+    }
+    
+    
+    
+  
+    //Mat imagen=imread("/Users/Diogo/Desktop/antonia2.jpg");
+   // Mat imagen=imread("/Users/Diogo/Desktop/antonia2.jpg");
+    
+   // Mat imagenOriginal=imread("/Users/Diogo/Pictures/IMG_1957.JPG");
+   // Mat imagen ;
+    
+    /*
+    cout<<imagenOriginal.size()<<endl;
+    resize(imagenOriginal, imagen, Size(440,440));
+    cout<<imagen.size()<<endl;
+*/
+
     
 	CascadeClassifier detector, eyes_detector;
     
@@ -79,7 +142,7 @@ int main()
           //circulo del parche negro
             
             for (int i=0; i<rightEye[0].width/2+15; i++) {
-                Point centerEyeRigth=Point(rightEye[0].x + rightX + rect[0].x, rightEye[0].y + topY + rect[0].y+rightEye[0].height/2);
+                Point centerEyeRigth=Point(rightEye[0].x + rightX + rect[0].x+5, rightEye[0].y + topY + rect[0].y+rightEye[0].height/2);
                 
                 circle(imagen, centerEyeRigth, i, CV_RGB(0,0,0));
                 
@@ -96,8 +159,8 @@ int main()
             
         
           //circulo rojo
-            Point centerEyeRigth2=Point(rightEye[0].width + widthX + rect[0].x + 5, rightEye[0].height + heightY + rect[0].y);
-            cout<<"Punto 2 :"<<centerEyeRigth2<<endl;
+        Point centerEyeRigth2=Point(rightEye[0].width + widthX + rect[0].x + 5, rightEye[0].height + heightY + rect[0].y);
+            //cout<<"Punto 2 :"<<centerEyeRigth2<<endl;
             circle(imagen, centerEyeRigth2, 5, CV_RGB(255, 0, 0));
             
             /*
