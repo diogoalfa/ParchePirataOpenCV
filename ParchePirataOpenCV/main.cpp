@@ -27,8 +27,8 @@ int main()
     
     // string urlImagen="/Users/Diogo/Pictures/IMG_1967 1.JPG";
     //string urlImagen="/Users/Diogo/Desktop/antonia2.jpg";
-   string urlImagen="/Users/Diogo/Desktop/fotoMia.jpeg";
-    //string urlImagen="/Users/Diogo/Pictures/IMG_1797.JPG";
+   //string urlImagen="/Users/Diogo/Desktop/fotoMia.jpeg";
+    string urlImagen="/Users/Diogo/Pictures/IMG_1797.JPG";
    //string urlImagen="/Users/Diogo/Pictures/IMG_1443.JPG";
    //string urlImagen="/Users/Diogo/Pictures/IMG_1480.JPG";
     //string urlImagen="/Users/Diogo/Pictures/IMG_1957.JPG";
@@ -107,6 +107,7 @@ int main()
                   Point(rc.x + rc.width, rc.y + rc.height),
                   CV_RGB(0,255,0), 2);
          */
+        
 	}
     
 	if(rect.size() > 0)
